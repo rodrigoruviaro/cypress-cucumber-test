@@ -12,13 +12,13 @@
     "hasOther": false,
     "skipped": 0,
     "hasSkipped": false,
-    "start": "2025-08-14T23:09:23.326Z",
-    "end": "2025-08-14T23:09:31.422Z",
-    "duration": 8096
+    "start": "2025-08-14T23:25:17.397Z",
+    "end": "2025-08-14T23:25:25.371Z",
+    "duration": 7974
   },
   "results": [
     {
-      "uuid": "018810de-dee1-4c52-aea7-7f8d0e0f28b7",
+      "uuid": "cba0f10d-e2a0-4a4a-8dbf-ed3f1cb20401",
       "title": "",
       "fullFile": "cypress/e2e/step_definitions/login.feature",
       "file": "cypress/e2e/step_definitions/login.feature",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "7f29a762-68fd-4c49-9715-bdaa5959bcca",
+          "uuid": "cf94c9d9-7a16-4479-a0da-19dcaee50db8",
           "title": "Login",
           "fullFile": "",
           "file": "",
@@ -35,10 +35,10 @@
           "afterHooks": [],
           "tests": [
             {
-              "title": "Login com usuário válido e validação de elementos na página",
-              "fullTitle": "Login Login com usuário válido e validação de elementos na página",
+              "title": "Login na aplicação (example #1)",
+              "fullTitle": "Login Login na aplicação (example #1)",
               "timedOut": null,
-              "duration": 1550,
+              "duration": 1455,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,16 +47,16 @@
               "context": null,
               "code": "const state = window.testState;\nreturn cy\n  .then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() =>\n    resolveAndRunBeforeHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() =>\n    indexedSteps.forEach((step) =>\n      stepTest.call(this, state, step, rowData)\n    )\n  )\n  .then(() => state.onFinishScenario(scenario));",
               "err": {},
-              "uuid": "1ad534cf-099a-498b-90b5-2d72c1fc4719",
-              "parentUUID": "7f29a762-68fd-4c49-9715-bdaa5959bcca",
+              "uuid": "1611466b-99a2-4699-a91b-fe50ca419e7b",
+              "parentUUID": "cf94c9d9-7a16-4479-a0da-19dcaee50db8",
               "isHook": false,
               "skipped": false
             },
             {
-              "title": "Login com senha incorreta deve retornar erro",
-              "fullTitle": "Login Login com senha incorreta deve retornar erro",
+              "title": "Login na aplicação (example #2)",
+              "fullTitle": "Login Login na aplicação (example #2)",
               "timedOut": null,
-              "duration": 4850,
+              "duration": 4771,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -65,21 +65,21 @@
               "context": null,
               "code": "const state = window.testState;\nreturn cy\n  .then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() =>\n    resolveAndRunBeforeHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() =>\n    indexedSteps.forEach((step) =>\n      stepTest.call(this, state, step, rowData)\n    )\n  )\n  .then(() => state.onFinishScenario(scenario));",
               "err": {},
-              "uuid": "e8f28786-650d-44a9-bdb1-a7dc847eeae2",
-              "parentUUID": "7f29a762-68fd-4c49-9715-bdaa5959bcca",
+              "uuid": "551682b7-cb64-4328-a142-cc301cea8b88",
+              "parentUUID": "cf94c9d9-7a16-4479-a0da-19dcaee50db8",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "1ad534cf-099a-498b-90b5-2d72c1fc4719",
-            "e8f28786-650d-44a9-bdb1-a7dc847eeae2"
+            "1611466b-99a2-4699-a91b-fe50ca419e7b",
+            "551682b7-cb64-4328-a142-cc301cea8b88"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 6400,
+          "duration": 6226,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

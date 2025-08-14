@@ -1,7 +1,10 @@
 /// <reference types="cypress" />
 
 
+import LoginPage from './pages/LoginPage';
+
 Cypress.Commands.add('Login', (username, password) => {
-    cy.get('[data-test="username"]').clear().type(username, { log: false });
-    cy.get('[data-test="password"]').clear().type(password, { log: false });
+    LoginPage.preencherUsuario(username);
+    LoginPage.preencherSenha(password);
+    LoginPage.clicarLogin();
 });
