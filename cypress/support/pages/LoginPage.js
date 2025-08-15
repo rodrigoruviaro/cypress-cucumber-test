@@ -1,30 +1,42 @@
 class LoginPage {
-    url = 'https://www.saucedemo.com/';
+    constructor() {
+        this.url = 'https://www.saucedemo.com/';
+        this.elements = {
+            loginLogo: '.login_logo',
+            usernameInput: '[data-test="username"]',
+            passwordInput: '[data-test="password"]',
+            loginButton: '[data-test="login-button"]',
+            errorMessage: '[data-test="error"]',
+            menuButton: '#react-burger-menu-btn',
+            inventoryList: '[data-test="inventory-container"]'
+        };
+    }
 
-    elements = {
-        usernameInput: () => cy.get('[data-test="username"]'),
-        passwordInput: () => cy.get('[data-test="password"]'),
-        loginButton: () => cy.get('[data-test="login-button"]'),
-        errorMessage: () => cy.get('[data-test="error"]'),
-        menuButton: () => cy.get('#react-burger-menu-btn'),
-        inventoryList: () => cy.get('[data-test="inventory-container"]')
-    };
-
-    acessarPagina() {
+    visit() {
         cy.visit(this.url);
+        cy.url().should('eq', this.url);
+        cy.get(this.elements.loginLogo).should('have.text', 'Swag Labs');
     }
 
-    preencherUsuario(username) {
-        this.elements.usernameInput().clear().type(username, { log: false });
+    login(username, password) {
+        cy.Login(username, password);
     }
 
-    preencherSenha(password) {
-        this.elements.passwordInput().clear().type(password, { log: false });
+    validateSuccessLogin() {
+        cy.url().should('eq', `${this.url}inventory.html`);
+        cy.get(this.elements.menuButton).should('be.visible');
+        cy.get(this.elements.inventoryList).should('be.visible');
     }
 
-    clicarLogin() {
-        this.elements.loginButton().should('be.visible').click();
+    validateError503() {
+        cy.intercept('POST', '**/json').as('InterceptLogin');
+        this.login('standard_user', 'senha@123');
+        cy.wait('@InterceptLogin', { timeout: 30000 }).its('response.statusCode').should('eq', 503);
+        cy.get(this.elements.errorMessage)
+            .should('be.visible')
+            .should('contain', 'Epic sadface: Username and password do not match any user in this service');
+        cy.url().should('eq', this.url);
     }
 }
 
-export default new LoginPage();
+export default LoginPage;
